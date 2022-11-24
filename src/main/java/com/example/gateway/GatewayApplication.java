@@ -21,12 +21,17 @@ public class GatewayApplication {
     public RouteLocator myRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 // use regex to map to microservice
+                // USER
                 .route(p -> p
                         .path("/register","/login","/user/**")
                         .uri(userService))
+
+                // WATCHLIST
                 .route(p -> p
                         .path("/watchlist")
                         .uri(watchlistService))
+
+
                 .build();
     }
 
