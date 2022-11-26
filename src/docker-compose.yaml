@@ -1,0 +1,14 @@
+services:
+  watchlist:
+    build:
+      context: .
+    image: maven/builder:gateway
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./src:/build/src"
+      - "./target:/build/target:cached"
+    command: "mvn spring-boot:run"
+    networks:
+      - my-application-network
