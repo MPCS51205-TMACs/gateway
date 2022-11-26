@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class GatewayApplication {
-    String userService = "http://localhost:8081";
-    String watchlistService = "http://localhost:8082";
+    String userService = "http://user-service:8080";
+    String watchlistService = "http://watchlist-service:8080";
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
