@@ -1,5 +1,5 @@
 services:
-  watchlist:
+  gateway:
     build:
       context: .
     image: maven/builder:gateway
@@ -12,3 +12,6 @@ services:
     command: "mvn spring-boot:run"
     networks:
       - my-application-network
+networks:
+  my-application-network:
+    driver: bridge
