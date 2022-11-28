@@ -14,6 +14,8 @@ public class GatewayApplication {
     String watchlistService = "http://watchlist-service:8080";
     String notificationService = "http://notification-service:8080";
 
+    String itemService = "http://item-service:8080";
+
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
@@ -36,6 +38,12 @@ public class GatewayApplication {
                 .route(p -> p
                         .path("/email", "/email/*", "/email/inbox/*", "/email/outbox/*", "/email/template/*", "/user-profile/*", "/user-profile","/notification/api/v1/**")
                         .uri(notificationService))
+
+                // ITEM
+                .route(p -> p
+                        .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**",
+                                "/item/category/**", "/item/bookmark/**"))
+                        .uri(itemService)
             
 
                 .build();
