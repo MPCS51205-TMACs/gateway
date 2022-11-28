@@ -11,9 +11,12 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class GatewayApplication {
     String userService = "http://user-service:8080";
-    String watchlistService = "http://watchlist:8080";
     String auctionsService = "http://auctions-service:10000";
     String camService = "http://cam-service:51224";
+    String watchlistService = "http://watchlist-service:8080";
+    String notificationService = "http://notification-service:8080";
+
+    String itemService = "http://item-service:8080";
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
@@ -32,6 +35,11 @@ public class GatewayApplication {
                 .route(p -> p
                         .path("/watchlist")
                         .uri(watchlistService))
+            
+                // NOTIFICATION
+                .route(p -> p
+                        .path("/email", "/email/*", "/email/inbox/*", "/email/outbox/*", "/email/template/*", "/user-profile/*", "/user-profile","/notification/api/v1/**")
+                        .uri(notificationService))
 
                 // AUCTIONS
                 .route(p -> p
@@ -43,6 +51,11 @@ public class GatewayApplication {
                         .path("/api/v1/closedauctions/**")
                         .uri(camService))
 
+                // ITEM
+                .route(p -> p
+                        .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**","/item/category/**", "/item/bookmark/**", "item/inappropriate/**", "item/counterfeit/**")
+                        .uri(itemService))
+            
 
                 .build();
     }
