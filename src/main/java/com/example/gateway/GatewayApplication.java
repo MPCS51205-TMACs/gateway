@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 public class GatewayApplication {
     String userService = "http://user-service:8080";
     String watchlistService = "http://watchlist-service:8080";
+    String notificationService = "http://notification-service:8080";
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
@@ -30,7 +31,12 @@ public class GatewayApplication {
                 .route(p -> p
                         .path("/watchlist")
                         .uri(watchlistService))
-
+            
+                // NOTIFICATION
+                .route(p -> p
+                        .path("/email", "/email/*", "/email/inbox/*", "/email/outbox/*", "/email/template/*", "/user-profile/*", "/user-profile","/notification/api/v1/**")
+                        .uri(notificationService))
+            
 
                 .build();
     }
