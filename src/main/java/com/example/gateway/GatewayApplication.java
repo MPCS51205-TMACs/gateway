@@ -53,7 +53,7 @@ public class GatewayApplication {
 
                 // ITEM
                 .route(p -> p
-                        .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**","/item/category/**", "/item/bookmark/**", "item/inappropriate/**", "item/counterfeit/**")
+                        .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**","/item/category/**", "/item/bookmark/**", "/item/inappropriate/**", "/item/counterfeit/**", "/item/list")
                         .uri(itemService))
             
 
