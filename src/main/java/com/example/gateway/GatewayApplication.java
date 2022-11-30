@@ -15,8 +15,8 @@ public class GatewayApplication {
     String camService = "http://cam-service:51224";
     String watchlistService = "http://watchlist-service:8080";
     String notificationService = "http://notification-service:8080";
-
     String itemService = "http://item-service:8080";
+    String cartService = "http://shopping-cart-service:10001";
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
@@ -46,7 +46,7 @@ public class GatewayApplication {
                         .path("/api/v1/Auctions/**","/api/v1/Bids/**","/api/v1/ItemsUserHasBidsOn/**","/api/v1/cancelAuction/**","/api/v1/stopAuction/**","/api/v1/activeAuctions/**")
                         .uri(auctionsService))
 
-                // AUCTIONS
+                // CLOSED-AUCTION-METRICS (CAM)
                 .route(p -> p
                         .path("/api/v1/closedauctions/**")
                         .uri(camService))
@@ -55,6 +55,11 @@ public class GatewayApplication {
                 .route(p -> p
                         .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**","/item/category/**", "/item/bookmark/**", "/item/inappropriate/**", "/item/counterfeit/**", "/item/list")
                         .uri(itemService))
+
+                // SHOPPING-CART
+                        .route(p -> p
+                        .path("/carts/**")
+                        .uri(cartService))
             
 
                 .build();
