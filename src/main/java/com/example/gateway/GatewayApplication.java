@@ -58,7 +58,7 @@ public class GatewayApplication {
 
                 // SHOPPING-CART
                         .route(p -> p
-                        .path("/carts/**")
+                        .path("/carts/**","/boughtitems/**","/receipts/**")
                         .uri(cartService))
             
 
