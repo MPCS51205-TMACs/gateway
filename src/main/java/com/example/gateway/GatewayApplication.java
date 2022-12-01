@@ -15,7 +15,7 @@ public class GatewayApplication {
     String camService = "http://cam-service:51224";
     String watchlistService = "http://watchlist-service:8080";
     String notificationService = "http://notification-service:8080";
-    String itemService = "http://item-service:8080";
+    String itemService = "http://item-service:8088";
     String cartService = "http://shopping-cart-service:10001";
 
     public static void main(String[] args) {
@@ -53,7 +53,7 @@ public class GatewayApplication {
 
                 // ITEM
                 .route(p -> p
-                        .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**","/item/category/**", "/item/bookmark/**", "/item/inappropriate/**", "/item/counterfeit/**", "/item/list")
+                        .path("/item/**")
                         .uri(itemService))
 
                 // SHOPPING-CART
