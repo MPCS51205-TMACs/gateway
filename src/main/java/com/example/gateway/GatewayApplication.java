@@ -38,7 +38,7 @@ public class GatewayApplication {
             
                 // NOTIFICATION
                 .route(p -> p
-                        .path("/email", "/email/*", "/email/inbox/*", "/email/outbox/*", "/email/template/*", "/user-profile/*", "/user-profile","/notification/api/v1/**")
+                        .path("/api/v1/notification/email", "/api/v1/notification/email/*", "/api/v1/notification/email/inbox/*", "/api/v1/notification/email/outbox/*", "/api/v1/notification/email/template/*")
                         .uri(notificationService))
 
                 // AUCTIONS
