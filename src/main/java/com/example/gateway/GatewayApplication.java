@@ -15,8 +15,8 @@ public class GatewayApplication {
     String camService = "http://cam-service:51224";
     String watchlistService = "http://watchlist-service:8080";
     String notificationService = "http://notification-service:8080";
-
-    String itemService = "http://item-service:8080";
+    String itemService = "http://item-service:8088";
+    String cartService = "http://shopping-cart-service:10001";
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
@@ -38,7 +38,7 @@ public class GatewayApplication {
             
                 // NOTIFICATION
                 .route(p -> p
-                        .path("/email", "/email/*", "/email/inbox/*", "/email/outbox/*", "/email/template/*", "/user-profile/*", "/user-profile","/notification/api/v1/**")
+                        .path("/api/v1/notification/email", "/api/v1/notification/email/*", "/api/v1/notification/email/inbox/*", "/api/v1/notification/email/outbox/*", "/api/v1/notification/email/template/*")
                         .uri(notificationService))
 
                 // AUCTIONS
@@ -46,15 +46,20 @@ public class GatewayApplication {
                         .path("/api/v1/Auctions/**","/api/v1/Bids/**","/api/v1/ItemsUserHasBidsOn/**","/api/v1/cancelAuction/**","/api/v1/stopAuction/**","/api/v1/activeAuctions/**")
                         .uri(auctionsService))
 
-                // AUCTIONS
+                // CLOSED-AUCTION-METRICS (CAM)
                 .route(p -> p
                         .path("/api/v1/closedauctions/**")
                         .uri(camService))
 
                 // ITEM
                 .route(p -> p
-                        .path("/item", "item/**", "/item/query", "/item/bookmark/byUser:**", "/item/bookmark/byItem:**","/item/category/**", "/item/bookmark/**", "/item/inappropriate/**", "/item/counterfeit/**", "/item/list")
+                        .path("/item/**")
                         .uri(itemService))
+
+                // SHOPPING-CART
+                        .route(p -> p
+                        .path("/carts/**","/boughtitems/**","/receipts/**")
+                        .uri(cartService))
             
 
                 .build();
