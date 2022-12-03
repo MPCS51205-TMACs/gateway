@@ -10,8 +10,8 @@ spring:
     username: gateway
     password: gateway
     url: jdbc:postgresql://localhost:5433/revoked_tokens
-#  rabbitmq:
-#    host: rabbitmq-server
+  rabbitmq:
+    host: rabbitmq-server
   cloud:
     gateway:
       globalcors:

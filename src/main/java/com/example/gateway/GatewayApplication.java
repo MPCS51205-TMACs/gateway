@@ -33,7 +33,7 @@ public class GatewayApplication {
 
                 // WATCHLIST
                 .route(p -> p
-                        .path("/watchlist")
+                        .path("/watchlist/**")
                         .uri(watchlistService))
             
                 // NOTIFICATION
@@ -53,7 +53,7 @@ public class GatewayApplication {
 
                 // ITEM
                 .route(p -> p
-                        .path("/item/**")
+                        .path("/item/**","/category/**")
                         .uri(itemService))
 
                 // SHOPPING-CART
