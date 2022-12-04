@@ -10,6 +10,9 @@ services:
       - "./src:/build/src"
       - "./target:/build/target:cached"
     command: "mvn spring-boot:run"
+    depends_on:
+      - postgres-gateway
+      - rabbitmq-server
     networks:
       - my-application-network
 
@@ -25,7 +28,7 @@ services:
     networks: # allows containers to recognize the hostnames of other containers
       - my-application-network
 
-  rabbitmq:
+  rabbitmq-server:
     image: rabbitmq:3-management
     container_name: rabbitmq-server
     restart: always

@@ -5,7 +5,7 @@ spring:
       ddl-auto: create
   datasource:
     username: gateway
-    password: gateway˚
+    password: gateway
     url: jdbc:postgresql://postgres-gateway:5432/revoked_tokens
   rabbitmq:
     host: rabbitmq-server
