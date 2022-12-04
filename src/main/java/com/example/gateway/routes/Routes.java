@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Routes {
 
-    String userService = "http://localhost:8081";
+    String userService = "http://user-service:8080";
     String auctionsService = "http://auctions-service:10000";
     String camService = "http://cam-service:51224";
     String watchlistService = "http://watchlist-service:8080";
@@ -58,7 +58,7 @@ public class Routes {
 
                 // ITEM
                 .route(p -> p
-                        .path("/item", "item/**")
+                        .path("/item", "/item/**","/category/**")
                         .filters(f-> f.filter(filterFactory.apply()))
                         .uri(itemService))
 
