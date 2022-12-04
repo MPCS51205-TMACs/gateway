@@ -46,13 +46,13 @@ public class Routes {
 
                 // AUCTIONS
                 .route(p -> p
-                        .path("/api/v1/**", "/api/v1/Bids/**", "/api/v1/ItemsUserHasBidsOn/**", "/api/v1/cancelAuction/**", "/api/v1/stopAuction/**", "/api/v1/activeAuctions/**")
+                        .path("/api/v1/Bids/**", "/api/v1/ItemsUserHasBidsOn/**", "/api/v1/cancelAuction/**", "/api/v1/stopAuction/**", "/api/v1/activeAuctions/**")
                         .filters(f-> f.filter(filterFactory.apply()))
                         .uri(auctionsService))
 
-                // AUCTIONS
+                // CAM
                 .route(p -> p
-                        .path("/api/v1/closedauctions/**")
+                        .path("/api/v1/closedauctions/**", "/api/v1/closedauctions")
                         .filters(f-> f.filter(filterFactory.apply()))
                         .uri(camService))
 
