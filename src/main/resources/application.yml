@@ -6,7 +6,7 @@ spring:
   datasource:
     username: gateway
     password: gateway˚
-    url: jdbc:postgresql://postgres-gateway:5433/revoked_tokens
+    url: jdbc:postgresql://postgres-gateway:5432/revoked_tokens
   rabbitmq:
     host: rabbitmq-server
   cloud:
