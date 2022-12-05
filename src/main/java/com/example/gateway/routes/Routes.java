@@ -34,7 +34,7 @@ public class Routes {
 
                 // WATCHLIST
                 .route(p -> p
-                        .path("/watchlist")
+                        .path("/watchlist/**")
                         .filters(f-> f.filter(filterFactory.apply()))
                         .uri(watchlistService))
 
