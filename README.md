@@ -1,0 +1,2 @@
+# Gateway
+The gateway provides an initial check of the JWT in `\filter\RevokedTokenFilter` and routes to the necessary service. It stores revoked tokens by listening to `user.delete` and `user.activation`
